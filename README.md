@@ -1,1 +1,1 @@
-# cs361
+Initial commit

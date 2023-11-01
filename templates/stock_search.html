@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... other head elements ... -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="welcome-box">
+    Welcome to Stock Search
+</div>
+
+<!-- Display flash messages -->
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<!-- Search form -->
+<form action="{{ url_for('stock_search') }}" method="post">
+    <input type="text" name="stock_name" placeholder="Enter stock name">
+    <input type="submit" name="search" value="Search">
+</form>
+
+<!-- Display stock information -->
+{% if stock_info %}
+<div>
+    <table>
+        <tbody>
+            {% for key, value in stock_info[0].items() %}
+            <tr>
+                <th>{{ key }}</th>
+                <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Form to add stock to portfolio -->
+    <form action="{{ url_for('stock_search') }}" method="post">
+        <input type="hidden" name="stock_to_add" value="{{ stock_info[0]['Name'] }}">
+        <input type="submit" name="add_to_portfolio" value="Add to My Portfolio">
+    </form>
+</div>
+{% endif %}
+
+</body>
+</html>

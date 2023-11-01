@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... other head elements ... -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<div class="welcome-box">
+    Welcome to My Portfolio
+</div>
+
+{% if portfolio %}
+<ul>
+    {% for stock in portfolio %}
+        <li>
+            {{ stock }}
+            <!-- Updated action to 'portfolio' -->
+            <form action="{{ url_for('portfolio') }}" method="post" style="display: inline;">
+                <input type="hidden" name="stock_to_remove" value="{{ stock }}">
+                <input type="submit" value="Remove">
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>You haven't added any stocks to your portfolio yet.</p>
+{% endif %}
+
+</body>
+</html>

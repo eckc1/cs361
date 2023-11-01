@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Fantasy Investing Service</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome To My Fantasy Investing Service</h1>
+    </header>
+
+    <div class="button-container">
+    <a href="{{ url_for('portfolio') }}"><button>My Portfolio</button></a>
+</div>
+
+<div class="button-container">
+    <a href="{{ url_for('stock_search') }}"><button>Stock Search</button></a>
+    <a href="{{ url_for('history') }}"><button>History</button></a>
+</div>
+
+<div class="button-container">
+    <a href="{{ url_for('stock_prediction') }}"><button>Stock Prediction</button></a>
+    <a href="{{ url_for('learning_materials') }}"><button>Learning Materials</button></a>
+</div>
+</body>
+</html>
